@@ -37,14 +37,19 @@ public class DentistaService {
         return Optional.of(dentistaRepository.findAll()).orElse(Collections.emptyList());
     }
 
-    public void atualizarDentista(DentistaRequest dentistaRequest) {
-        Optional<Dentista> optionalDentista = dentistaRepository.findById(dentistaRequest.getId());
-        if(optionalDentista.isPresent()){
-            Dentista dentistaExistente = optionalDentista.get();
-            BeanUtils.copyProperties(dentistaRequest, dentistaExistente, "id");
-            dentistaRepository.save(dentistaExistente);
-        } else {
-            throw new RuntimeException("Dentista não encontrado");
-        }
+    public Dentista buscarPorId(Long id) {
+        return dentistaRepository.findById(id).orElse(null);
+    }
+
+    public void atualizarDentista(Long id, DentistaRequest dentistaRequest) {
+        Dentista dentista = dentistaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Dentista não encontrado"));
+
+        dentista.setNome(dentistaRequest.getNome());
+        dentista.setCro(dentistaRequest.getCro());
+        dentista.setEspecialidade(dentistaRequest.getEspecialidade());
+        dentista.setEmail(dentistaRequest.getEmail());
+
+        dentistaRepository.save(dentista);
     }
 }

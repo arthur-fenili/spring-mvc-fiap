@@ -50,9 +50,17 @@ public class DentistaController {
         return new ModelAndView("redirect:/dentista/lista");
     }
 
-    @PutMapping("/atualizar")
-    public ModelAndView atualizarDentista(DentistaRequest dentistaRequest) {
-        dentistaService.atualizarDentista(dentistaRequest);
+    @GetMapping("/atualizar/{id}")
+    public ModelAndView exibirFormularioEdicao(@PathVariable Long id) {
+        ModelAndView mv = new ModelAndView("editarDentista");
+        mv.addObject("dentistaRequest", dentistaService.buscarPorId(id));
+        mv.addObject("especialidades", Especialidade.values());
+        return mv;
+    }
+
+    @PostMapping("/atualizar/{id}")
+    public ModelAndView atualizarDentista(@PathVariable Long id, DentistaRequest dentistaRequest) {
+        dentistaService.atualizarDentista(id, dentistaRequest);
         return new ModelAndView("redirect:/dentista/lista");
     }
 }
