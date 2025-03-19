@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de dentistas</title>
+  <link th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}" rel="stylesheet"/>
+  <link th:href="@{/css/style.css}" rel="stylesheet"/>
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"></div>
+<div class="container mt-3">
+    <h2>Lista de Dentistas</h2>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>CRO</th>
+            <th>Especialidade</th>
+            <th>Telefone</th>
+            <th>Editar</th>
+            <th>Excluir</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="dentista : ${dentistas}">
+            <td th:text="${dentista.nome}"></td>
+            <td th:text="${dentista.cro}"></td>
+            <td th:text="${dentista.especialidade}"></td>
+            <td th:text="${dentista.telefone}"></td>
+            <td><a th:href="@{/dentistas/{id}/editar(id=${dentista.id})}">Editar</a></td>
+            <td><a th:href="@{/dentistas/{id}/excluir(id=${dentista.id})}">Excluir</a></td>
+        </tr>
+        </tbody>
+    </table>
+    <p th:if="${#lists.isEmpty(dentistas)}">Nenhum dentista cadastrado.</p>
+    <br/>
+    <a th:href="@{/dentista/cadastrar}">
+        <button type="button" class="btn btn-success">Cadastrar Novo Dentista</button>
+    </a>
+</div>
+
+</body>
+</html>

@@ -17,9 +17,10 @@ public class DentistaRequest {
     @NotBlank(message = "Especialidade é obrigatória")
     private Especialidade especialidade;
 
+    @NotBlank(message = "Email é obrigatório")
+    private String email;
+
     @NotBlank(message = "Telefone é obrigatório")
     private String telefone;
 
-    @NotBlank(message = "Email é obrigatório")
-    private String email;
 }

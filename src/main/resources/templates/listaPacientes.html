@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de pacientes</title>
+    <link th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+</head>
+<body>
+<div th:replace="~{fragments/header :: header}"></div>
+<div class="container mt-3">
+    <h2>Lista de Pacientes</h2>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Data de nascimento</th>
+            <th>Plano</th>
+            <th>Telefone</th>
+            <th>E-mail</th>
+            <th>Editar</th>
+            <th>Excluir</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="paciente : ${pacientes}">
+            <td th:text="${paciente.nome}"></td>
+            <td th:text="${paciente.cpf}"></td>
+            <td th:text="${paciente.dataNascimento}"></td>
+            <td th:text="${paciente.planoSaude}"></td>
+            <td th:text="${paciente.telefone}"></td>
+            <td th:text="${paciente.email}"></td>
+            <td><a th:href="@{/pacientes/{id}/editar(id=${paciente.id})}">Editar</a></td>
+            <td><a th:href="@{/pacientes/{id}/excluir(id=${paciente.id})}">Excluir</a></td>
+        </tr>
+        </tbody>
+    </table>
+    <br/>
+    <a th:href="@{/paciente/cadastrar}">
+        <button type="button" class="btn btn-success">Cadastrar Novo Paciente</button>
+    </a>
+</div>
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+
+</body>
+</html>

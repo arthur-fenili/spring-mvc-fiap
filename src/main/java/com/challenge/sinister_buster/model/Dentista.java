@@ -32,4 +32,6 @@ public class Dentista {
     @Column(name = "EMAIL", length = 255)
     private String email;
 
+    @Column(name = "TELEFONE", length = 255)
+    private String telefone;
 }
