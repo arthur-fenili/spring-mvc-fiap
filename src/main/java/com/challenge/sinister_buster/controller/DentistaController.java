@@ -44,7 +44,7 @@ public class DentistaController {
         return mv;
     }
 
-    @DeleteMapping("/deletar/{id}")
+    @GetMapping("/deletar/{id}")
     public ModelAndView deletarDentista(@PathVariable Long id) {
         dentistaService.deletarDentista(id);
         return new ModelAndView("redirect:/dentista/lista");

@@ -31,8 +31,8 @@
             <td th:text="${paciente.planoSaude}"></td>
             <td th:text="${paciente.telefone}"></td>
             <td th:text="${paciente.email}"></td>
-            <td><a th:href="@{/pacientes/{id}/editar(id=${paciente.id})}">Editar</a></td>
-            <td><a th:href="@{/pacientes/{id}/excluir(id=${paciente.id})}">Excluir</a></td>
+            <td><a th:href="@{/paciente/atualizar/{id}(id=${paciente.id})}">Editar</a></td>
+            <td><a th:href="@{/paciente/deletar/{id}(id=${paciente.id})}">Excluir</a></td>
         </tr>
         </tbody>
     </table>

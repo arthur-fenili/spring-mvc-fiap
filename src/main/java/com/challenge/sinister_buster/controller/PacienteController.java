@@ -35,7 +35,7 @@ public class PacienteController {
         return mv;
     }
 
-    @DeleteMapping("/deletar/{id}")
+    @GetMapping("/deletar/{id}")
     public ModelAndView deletarPaciente(@PathVariable Long id) {
         pacienteService.deletarPaciente(id);
         return new ModelAndView("redirect:/paciente/lista");

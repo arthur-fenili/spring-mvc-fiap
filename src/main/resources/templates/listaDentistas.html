@@ -28,8 +28,8 @@
             <td th:text="${dentista.cro}"></td>
             <td th:text="${dentista.especialidade}"></td>
             <td th:text="${dentista.telefone}"></td>
-            <td><a th:href="@{/dentistas/{id}/editar(id=${dentista.id})}">Editar</a></td>
-            <td><a th:href="@{/dentistas/{id}/excluir(id=${dentista.id})}">Excluir</a></td>
+            <td><a th:href="@{/dentista/atualizar/{id}(id=${dentista.id})}">Editar</a></td>
+            <td><a th:href="@{/dentista/deletar/{id}(id=${dentista.id})}">Excluir</a></td>
         </tr>
         </tbody>
     </table>
