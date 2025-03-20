@@ -1,10 +1,10 @@
-/* Importando fonte Google para melhor aparência */
+/* fonte Google */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
 /* Definições gerais */
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #FFF7F0; /* Fundo suave alaranjado */
+    background-color: #FFF7F0;
     color: #333;
     margin: 0;
     padding: 0;
@@ -12,7 +12,7 @@ body {
 
 /* Header */
 header {
-    background-color: #FF8C42; /* Laranja vibrante */
+    background-color: #FF8C42;
     color: white;
     padding: 15px 0;
     text-align: center;
@@ -23,7 +23,7 @@ header {
 
 /* Footer */
 footer {
-    background-color: #D95D39; /* Laranja queimado */
+    background-color: #D95D39;
     color: white;
     text-align: center;
     padding: 10px 0;
@@ -31,7 +31,7 @@ footer {
     font-size: 0.9em;
 }
 
-/* Container centralizado */
+
 .container {
     max-width: 900px;
     margin: auto;
@@ -48,32 +48,33 @@ table {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Mantém a cor do cabeçalho até as bordas da tabela */
 th {
-    background-color: #FF8C42; /* Cabeçalho laranja */
+    background-color: #FF8C42;
     color: white;
     text-transform: uppercase;
     padding: 12px;
 }
 
-/* Aplica a mesma largura às colunas */
 th, td {
     padding: 15px;
     text-align: left;
-    border: none; /* Remove bordas individuais */
+    border: none;
 }
 
-/* Linhas de dados seguem o mesmo padrão */
 tbody tr {
-    background-color: #FFE8D6; /* Mantém tom alaranjado suave */
+    background-color: #FFE8D6;
 }
 
 tbody tr:nth-child(even) {
-    background-color: #FFD5A5; /* Alternância de cores mais intensa */
+    background-color: #FFD5A5;
 }
 
 tbody tr:hover {
-    background-color: #FFC08A; /* Destaque ao passar o mouse */
+    background-color: #FFC08A;
+}
+
+.editar, .excluir {
+    color: #FF8C42;
 }
 
 /* Botões */
