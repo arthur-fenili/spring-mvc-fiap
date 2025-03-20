@@ -8,8 +8,13 @@
 </head>
 <body>
 <div th:fragment="header" style="text-align: center;">
-    <hr /> <h1>CADASTRO DE PACIENTES E DENTISTAS</h1> <hr />
+    <hr />
+    <h1>CADASTRO DE PACIENTES E DENTISTAS</h1>
+    <hr />
+    <div>
+        <a th:href="@{/paciente/lista}" class="btn btn-primary">PACIENTES</a>
+        <a th:href="@{/dentista/lista}" class="btn btn-primary">DENTISTAS</a>
+    </div>
 </div>
-
 </body>
 </html>
