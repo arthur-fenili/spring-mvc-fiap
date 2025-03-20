@@ -36,14 +36,23 @@ public class PacienteService {
         return pacienteRepository.findAll();
     }
 
-    public void atualizarPaciente(PacienteRequest pacienteRequest) {
-        Optional<Paciente> optionalPaciente = pacienteRepository.findById(pacienteRequest.getId());
-        if(optionalPaciente.isPresent()){
-            Paciente pacienteExistente = optionalPaciente.get();
-            BeanUtils.copyProperties(pacienteRequest, pacienteExistente, "id");
-            pacienteRepository.save(pacienteExistente);
-        } else {
-            throw new RuntimeException("Paciente não encontrado");
-        }
+    public Paciente buscarPorId(Long id) {
+        return pacienteRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Paciente não encontrado"));
     }
+
+    public void atualizarPaciente(Long id, PacienteRequest pacienteRequest) {
+        Paciente paciente = pacienteRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Paciente não encontrado"));
+
+        paciente.setNome(pacienteRequest.getNome());
+        paciente.setCpf(pacienteRequest.getCpf());
+        paciente.setDataNascimento(pacienteRequest.getDataNascimento());
+        paciente.setPlanoSaude(pacienteRequest.getPlanoSaude());
+        paciente.setTelefone(pacienteRequest.getTelefone());
+        paciente.setEmail(pacienteRequest.getEmail());
+
+        pacienteRepository.save(paciente);
+    }
+
 }

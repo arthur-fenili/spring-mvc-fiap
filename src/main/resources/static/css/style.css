@@ -1,0 +1,194 @@
+/* Importando fonte Google para melhor aparência */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Definições gerais */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #FFF7F0; /* Fundo suave alaranjado */
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header */
+header {
+    background-color: #FF8C42; /* Laranja vibrante */
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: 600;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer */
+footer {
+    background-color: #D95D39; /* Laranja queimado */
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 30px;
+    font-size: 0.9em;
+}
+
+/* Container centralizado */
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Tabelas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Mantém a cor do cabeçalho até as bordas da tabela */
+th {
+    background-color: #FF8C42; /* Cabeçalho laranja */
+    color: white;
+    text-transform: uppercase;
+    padding: 12px;
+}
+
+/* Aplica a mesma largura às colunas */
+th, td {
+    padding: 15px;
+    text-align: left;
+    border: none; /* Remove bordas individuais */
+}
+
+/* Linhas de dados seguem o mesmo padrão */
+tbody tr {
+    background-color: #FFE8D6; /* Mantém tom alaranjado suave */
+}
+
+tbody tr:nth-child(even) {
+    background-color: #FFD5A5; /* Alternância de cores mais intensa */
+}
+
+tbody tr:hover {
+    background-color: #FFC08A; /* Destaque ao passar o mouse */
+}
+
+/* Botões */
+.btn {
+    display: inline-block;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 1em;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn-primary {
+    background-color: #FF8C42;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #E67634;
+}
+
+.btn-warning {
+    background-color: #FFD07B;
+    color: #333;
+}
+
+.btn-warning:hover {
+    background-color: #E6B86E;
+}
+
+.btn-danger {
+    background-color: #D95D39;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #B8492E;
+}
+
+.btn-success {
+    background-color: #FFA447;
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #E6953E;
+}
+
+/* Links */
+a {
+    color: #d2502b;
+    text-decoration: none;
+}
+
+/* Formulários */
+form {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    display: block;
+    color: #D95D39;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #FF8C42;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+input:focus, select:focus {
+    border-color: #D95D39;
+    outline: none;
+    box-shadow: 0px 0px 5px rgba(217, 93, 57, 0.5);
+}
+
+input[type="submit"] {
+    background-color: #FF8C42;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+input[type="submit"]:hover {
+    background-color: #E67634;
+}
+
+/* Mensagens de erro/sucesso */
+.alert {
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.alert-info {
+    background-color: #FFD07B;
+    color: #333;
+}
+
+.alert-danger {
+    background-color: #D95D39;
+    color: white;
+}

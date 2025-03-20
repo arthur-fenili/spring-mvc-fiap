@@ -41,9 +41,17 @@ public class PacienteController {
         return new ModelAndView("redirect:/paciente/lista");
     }
 
-    @PutMapping("/atualizar")
-    public ModelAndView atualizarPaciente(PacienteRequest pacienteRequest) {
-        pacienteService.atualizarPaciente(pacienteRequest);
+    @GetMapping("/atualizar/{id}")
+    public ModelAndView exibirFormularioEdicao(@PathVariable Long id) {
+        ModelAndView mv = new ModelAndView("editarPaciente");
+        mv.addObject("pacienteRequest", pacienteService.buscarPorId(id));
+        return mv;
+    }
+
+    @PostMapping("/atualizar/{id}")
+    public ModelAndView atualizarPaciente(@PathVariable Long id, PacienteRequest pacienteRequest) {
+        pacienteService.atualizarPaciente(id, pacienteRequest);
         return new ModelAndView("redirect:/paciente/lista");
     }
+
 }
