@@ -9,15 +9,15 @@
 <body>
 <div th:replace="~{fragments/header :: header}"></div>
 <div class="container mt-3">
-    <h2>Lista de Pacientes</h2>
+    <h2 th:text="#{pacientelista.titulo}">Lista de Pacientes</h2>
     <table class="table table-bordered">
         <thead>
         <tr>
-            <th>Nome</th>
+            <th th:text="#{pacientelista.nome}">Nome</th>
             <th>CPF</th>
-            <th>Data de nascimento</th>
-            <th>Plano</th>
-            <th>Telefone</th>
+            <th th:text="#{pacientelista.nascimento}">Data de nascimento</th>
+            <th th:text="#{pacientelista.plano}">Plano</th>
+            <th th:text="#{pacientelista.telefone}">Telefone</th>
             <th>E-mail</th>
             <th class="editar">Editar</th>
             <th class="excluir">Excluir</th>
@@ -38,7 +38,7 @@
     </table>
     <br/>
     <a th:href="@{/paciente/cadastrar}">
-        <button type="button" class="btn btn-success">Cadastrar Novo Paciente</button>
+        <button type="button" class="btn btn-success" th:text="#{pacientelista.botaocadastro}">Cadastrar Novo Paciente</button>
     </a>
 </div>
 <div th:replace="~{fragments/footer :: footer}"></div>
