@@ -3,6 +3,7 @@ package com.challenge.sinister_buster.controller;
 import com.challenge.sinister_buster.dto.DentistaRequest;
 import com.challenge.sinister_buster.model.Especialidade;
 import com.challenge.sinister_buster.service.DentistaService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -37,7 +38,9 @@ public class DentistaController {
         return mv;
     }
 
+
     @GetMapping("/lista")
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
     public ModelAndView listaDentistas() {
         ModelAndView mv = new ModelAndView("listaDentistas");
         mv.addObject("dentistas", dentistaService.listarDentistas());

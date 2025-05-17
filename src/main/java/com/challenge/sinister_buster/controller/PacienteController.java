@@ -2,6 +2,7 @@ package com.challenge.sinister_buster.controller;
 
 import com.challenge.sinister_buster.dto.PacienteRequest;
 import com.challenge.sinister_buster.service.PacienteService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -29,6 +30,7 @@ public class PacienteController {
     }
 
     @GetMapping("/lista")
+    @PreAuthorize("hasRole('ADMIN')")
     public ModelAndView listaPacientes() {
         ModelAndView mv = new ModelAndView("listaPacientes");
         mv.addObject("pacientes", pacienteService.listarPacientes());

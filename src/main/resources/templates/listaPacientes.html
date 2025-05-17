@@ -2,25 +2,26 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Lista de pacientes</title>
+    <title th:text="#{pacientelista.titulo}">Lista de Pacientes</title>
     <link th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}" rel="stylesheet"/>
     <link th:href="@{/css/style.css}" rel="stylesheet"/>
 </head>
 <body>
 <div th:replace="~{fragments/header :: header}"></div>
+
 <div class="container mt-3">
     <h2 th:text="#{pacientelista.titulo}">Lista de Pacientes</h2>
     <table class="table table-bordered">
         <thead>
         <tr>
             <th th:text="#{pacientelista.nome}">Nome</th>
-            <th>CPF</th>
+            <th th:text="#{pacientelista.cpf}">CPF</th>
             <th th:text="#{pacientelista.nascimento}">Data de nascimento</th>
             <th th:text="#{pacientelista.plano}">Plano</th>
             <th th:text="#{pacientelista.telefone}">Telefone</th>
-            <th>E-mail</th>
-            <th class="editar">Editar</th>
-            <th class="excluir">Excluir</th>
+            <th th:text="#{pacientelista.email}">E-mail</th>
+            <th th:text="#{pacientelista.editar}">Editar</th>
+            <th th:text="#{pacientelista.excluir}">Excluir</th>
         </tr>
         </thead>
         <tbody>
@@ -31,18 +32,27 @@
             <td th:text="${paciente.planoSaude}"></td>
             <td th:text="${paciente.telefone}"></td>
             <td th:text="${paciente.email}"></td>
-            <td><a th:href="@{/paciente/atualizar/{id}(id=${paciente.id})}">Editar</a></td>
-            <td><a th:href="@{/paciente/deletar/{id}(id=${paciente.id})}">Excluir</a></td>
+            <td>
+                <a th:href="@{/paciente/atualizar/{id}(id=${paciente.id})}"
+                   th:text="#{pacientelista.editar}">Editar</a>
+            </td>
+            <td>
+                <a th:href="@{/paciente/deletar/{id}(id=${paciente.id})}"
+                   th:text="#{pacientelista.excluir}">Excluir</a>
+            </td>
         </tr>
         </tbody>
     </table>
     <br/>
     <a th:href="@{/paciente/cadastrar}">
-        <button type="button" class="btn btn-success" th:text="#{pacientelista.botaocadastro}">Cadastrar Novo Paciente</button>
+        <button type="button"
+                class="btn btn-success"
+                th:text="#{pacientelista.botaocadastro}">
+            Cadastrar Novo Paciente
+        </button>
     </a>
 </div>
+
 <div th:replace="~{fragments/footer :: footer}"></div>
-
-
 </body>
 </html>
