@@ -2,16 +2,16 @@ package com.challenge.sinister_buster.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
@@ -21,27 +21,30 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                // Autorização de URLs
                 .authorizeHttpRequests(auth -> auth
-                        // Recursos estáticos liberados
+                        // Actuator endpoints
+                        .requestMatchers("/actuator/health", "/actuator/info").permitAll()
+                        .requestMatchers("/actuator/**").hasRole("ADMIN")
+
+                        // Recursos estáticos
                         .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
-                        // Apenas ADMIN vê lista de pacientes
+
+                        // Regras de negócio
                         .requestMatchers("/paciente/lista").hasRole("ADMIN")
-                        // ADMIN e USER veem lista de dentistas
                         .requestMatchers("/dentista/lista").hasAnyRole("ADMIN", "USER")
-                        // Demais URLs exigem autenticação
                         .anyRequest().authenticated()
                 )
-                // Form-login usando a página padrão do Spring Security (/login automaticamente)
+                // form login padrão
                 .formLogin(form -> form
                         .defaultSuccessUrl("/dentista/lista", true)
                         .permitAll()
                 )
-                // Logout no padrão (POST /logout) e redireciona para login com ?logout
+                // logout padrão
                 .logout(logout -> logout
                         .logoutSuccessUrl("/login?logout")
                         .permitAll()
                 );
+
         return http.build();
     }
 
@@ -52,11 +55,13 @@ public class SecurityConfig {
                 .password(encoder.encode("senha"))
                 .roles("USER")
                 .build();
+
         UserDetails admin = User.builder()
                 .username("admin")
                 .password(encoder.encode("admin123"))
                 .roles("ADMIN")
                 .build();
+
         return new InMemoryUserDetailsManager(user, admin);
     }
 
