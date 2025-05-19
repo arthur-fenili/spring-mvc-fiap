@@ -16,6 +16,10 @@ O **Sinister Buster** é um projeto desenvolvido seguindo a arquitetura MVC (Mod
 - **Thymeleaf**: Template engine para renderização de páginas HTML dinâmicas.
 - **Oracle**: Banco de dados utilizado para armazenamento das informações.
 - **Bootstrap**: Framework CSS para estilização e responsividade.
+- **Spring Security** – autenticação e autorização
+- **Spring Boot Actuator** – monitoramento de saúde, métricas e logs
+- **Spring JMS (ActiveMQ)** – mensageria interna para disparo de mensagens
+- **Internacionalização (i18n)** – suporte a português e inglês via `messages.properties`
 
 ## Funcionalidades
 
@@ -37,15 +41,18 @@ O **Sinister Buster** é um projeto desenvolvido seguindo a arquitetura MVC (Mod
 ├── src/
 │   ├── main/
 │   │   ├── java/com/challenge/sinister_buster/
+|   |   |   ├── config/      # Classes de configuração
 │   │   │   ├── controller/  # Controladores (DentistaController, PacienteController)
 │   │   │   ├── dto/         # Data Transfer Objects (DentistaRequest, PacienteRequest)
+|   |   |   ├── messaging    # Configuração de mensageria (Broker ActiveMQ)
 │   │   │   ├── model/       # Modelos das entidades (Dentista, Paciente, Especialidade(Enum))
 │   │   │   ├── repository/  # Repositórios (JpaRepository para persistência de dados)
 │   │   │   ├── service/     # Serviços que contêm a lógica de negócio
 │   │   ├── resources/
 │   │   │   ├── templates/   # Páginas HTML (Thymeleaf)
 │   │   │   ├── static/css/  # Arquivos de estilo (style.css)
-│   │   ├── application.properties # Configurações do banco de dados
+|   |   |   ├── messages.properties) # Internacionalização
+|   |   |   ├── application.properties # Configurações do banco de dados
 ```
 
 ## Como Executar o Projeto
@@ -75,6 +82,25 @@ O **Sinister Buster** é um projeto desenvolvido seguindo a arquitetura MVC (Mod
     - Cadastro de Dentistas: `http://localhost:8080/dentista/cadastrar`
     - Listagem de Pacientes: `http://localhost:8080/paciente/lista`
     - Cadastro de Pacientes: `http://localhost:8080/paciente/cadastrar`
+
+5. **Segurança (Spring Security)**:
+    - Login/Logout usando a tela padrão do Spring Security
+    - Perfis de acesso**:
+       - **ADMIN**: pode acessar `/dentista/**` e `/paciente/**`
+       - **USER**: pode acessar apenas `/dentista/**`
+    - Controle de acesso em URLs**:
+       - `/dentista/lista` → roles `ADMIN` ou `USER`
+       - `/paciente/lista` → role `ADMIN` apenas
+    - Logout** via botão [SAIR] no cabeçalho, visível apenas para usuários autenticados
+
+6. **Internacionalização (i18n)**
+   - Arquivos `messages.properties` (pt) e `messages_en.properties` (en)
+   - Todas as labels, títulos e botões carregados a partir de chaves de mensagem
+
+7. **Monitoramento (Actuator)**
+   - Endpoints expostos em `/actuator`:
+      - **health**, **info** → públicos
+      - **metrics**, **loggers** (e demais) → acesso restrito a `ADMIN`
 
 ---
 
