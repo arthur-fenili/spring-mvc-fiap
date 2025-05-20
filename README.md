@@ -101,6 +101,9 @@ O **Sinister Buster** é um projeto desenvolvido seguindo a arquitetura MVC (Mod
    - Endpoints expostos em `/actuator`:
       - **health**, **info** → públicos
       - **metrics**, **loggers** (e demais) → acesso restrito a `ADMIN`
+8. **Mensageria (ActiveMQ)**
+   - Botão de teste de mensagem em `/dentista/lista`
+   - Observar Logs no terminal do Spring
 
 ---
 
